@@ -251,49 +251,16 @@ function initGallery() {
 }
 
 // ==========================================================================
-// Donation Form
+// Donor Interest Form
 // ==========================================================================
 
 /**
- * Initialize donation form with amount selection and validation
+ * Initialize donor interest form with validation
  */
 function initDonationForm() {
     const form = document.getElementById('donation-form');
-    const amountButtons = document.querySelectorAll('.amount-btn');
-    const amountInput = document.getElementById('amount');
 
-    if (!form || !amountInput) return;
-
-    // Amount button selection
-    amountButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            amountButtons.forEach(btn => btn.classList.remove('active'));
-
-            // Add active class to clicked button
-            button.classList.add('active');
-
-            // Set amount input value if not custom
-            const amount = button.dataset.amount;
-            if (amount !== 'custom') {
-                amountInput.value = amount;
-            } else {
-                amountInput.value = '';
-                amountInput.focus();
-            }
-        });
-    });
-
-    // When user types in amount, activate custom button
-    amountInput.addEventListener('input', () => {
-        amountButtons.forEach(btn => {
-            if (btn.dataset.amount === 'custom') {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-    });
+    if (!form) return;
 
     // Form submission
     form.addEventListener('submit', (e) => {
@@ -304,12 +271,11 @@ function initDonationForm() {
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
 
-            // Show success message (demo only)
-            alert(`Thank you for your donation of $${data.amount}!\n\nThis is a demo form. No actual payment has been processed.\n\nIn a production environment, this would connect to a payment processor like Stripe or PayPal.`);
+            // Show success message
+            alert(`Thank you for your interest, ${data.firstName}!\n\nWe have received your information:\n\nName: ${data.firstName} ${data.lastName}\nEmail: ${data.email}\nPhone: ${data.phone}\nInterest Area: ${data.program}\n\nWe will contact you shortly with more information about supporting our mission.\n\nNote: In production, this form would send an email to mahendragudipadu@gmail.com with these details.`);
 
             // Reset form
             form.reset();
-            amountButtons[0].classList.add('active');
         }
     });
 }

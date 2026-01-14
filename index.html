@@ -44,7 +44,7 @@
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
 
-                <a href="#donate" class="btn btn-primary btn-donate">Donate Now</a>
+                <a href="#contact" class="btn btn-primary btn-donate">Contact Us</a>
             </nav>
         </div>
     </header>
@@ -60,7 +60,7 @@
                 <p class="hero-subtitle">Spreading light, hope and service to all</p>
                 <div class="hero-buttons">
                     <a href="#about" class="btn btn-secondary">Learn More</a>
-                    <a href="#donate" class="btn btn-primary">Donate Now</a>
+                    <a href="#contact" class="btn btn-primary">Contact Us</a>
                 </div>
             </div>
         </section>
@@ -413,13 +413,13 @@
                         <div class="involvement-icon">💝</div>
                         <h3>Monthly Giving</h3>
                         <p>Join our community of sustaining partners with recurring monthly donations that provide reliable support for ongoing programs.</p>
-                        <a href="#donate" class="btn-link">Become a Partner →</a>
+                        <a href="#contact" class="btn-link">Become a Partner →</a>
                     </div>
                     <div class="involvement-card">
                         <div class="involvement-icon">🎓</div>
                         <h3>Sponsor a Child</h3>
                         <p>Make a direct impact by sponsoring a child's education, providing supplies, tutoring, and mentorship throughout their school years.</p>
-                        <a href="#donate" class="btn-link">Sponsor Now →</a>
+                        <a href="#contact" class="btn-link">Sponsor Now →</a>
                     </div>
                     <div class="involvement-card">
                         <div class="involvement-icon">🙏</div>
@@ -437,7 +437,7 @@
                         <div class="involvement-icon">🎁</div>
                         <h3>Honor Gifts</h3>
                         <p>Make a donation in honor or memory of a loved one, and we'll send a personalized acknowledgment card to your chosen recipient.</p>
-                        <a href="#donate" class="btn-link">Give an Honor Gift →</a>
+                        <a href="#contact" class="btn-link">Give an Honor Gift →</a>
                     </div>
                     <div class="involvement-card">
                         <div class="involvement-icon">🏢</div>
@@ -449,14 +449,14 @@
             </div>
         </section>
 
-        <!-- Donation Form -->
+        <!-- Support Interest Form -->
         <section id="donate" class="donation-form">
             <div class="container">
-                <h2 class="section-title">Make a Donation</h2>
-                <p class="section-subtitle">Your generosity transforms lives and brings hope to communities</p>
+                <h2 class="section-title">Partner With Us</h2>
+                <p class="section-subtitle">Interested in supporting our mission? Let us know how you'd like to help</p>
                 <div class="donation-grid">
                     <div class="donation-impact">
-                        <h3>Your Impact</h3>
+                        <h3>Ways to Support</h3>
                         <div class="impact-breakdown">
                             <div class="impact-item">
                                 <div class="impact-bar">
@@ -490,43 +490,13 @@
                             </div>
                         </div>
                         <div class="tax-deductible">
-                            <p><strong>Tax Deductible:</strong> Jeevan Jyoti Seva Society is a registered 501(c)(3) nonprofit. All donations are tax-deductible.</p>
+                            <p><strong>Note:</strong> We will contact you with information about how you can support our mission. All donations are tax-deductible.</p>
                         </div>
                     </div>
                     <div class="donation-form-wrapper">
                         <form id="donation-form" class="form" novalidate>
                             <div class="form-section">
-                                <h4>Donation Amount</h4>
-                                <div class="amount-buttons">
-                                    <button type="button" class="amount-btn" data-amount="25">$25</button>
-                                    <button type="button" class="amount-btn" data-amount="50">$50</button>
-                                    <button type="button" class="amount-btn" data-amount="100">$100</button>
-                                    <button type="button" class="amount-btn" data-amount="250">$250</button>
-                                    <button type="button" class="amount-btn active" data-amount="custom">Custom</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="amount">Amount (USD)</label>
-                                    <input type="number" id="amount" name="amount" min="1" placeholder="Enter amount" required aria-required="true">
-                                </div>
-                            </div>
-
-                            <div class="form-section">
-                                <h4>Program Selection</h4>
-                                <div class="form-group">
-                                    <label for="program">Where should your donation go?</label>
-                                    <select id="program" name="program" required aria-required="true">
-                                        <option value="">Select a program</option>
-                                        <option value="greatest-need">Where Most Needed</option>
-                                        <option value="education">Education Support</option>
-                                        <option value="women">Women's Empowerment</option>
-                                        <option value="elderly">Elderly Care</option>
-                                        <option value="emergency">Emergency Relief</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-section">
-                                <h4>Personal Information</h4>
+                                <h4>Your Information</h4>
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="first-name">First Name</label>
@@ -543,30 +513,37 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Phone Number</label>
-                                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required aria-required="true">
                                 </div>
                             </div>
 
                             <div class="form-section">
-                                <h4>Payment Information (Demo)</h4>
+                                <h4>Interest Area</h4>
                                 <div class="form-group">
-                                    <label for="card-number">Card Number</label>
-                                    <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" required aria-required="true">
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="exp-date">Expiration Date</label>
-                                        <input type="text" id="exp-date" name="expDate" placeholder="MM/YY" required aria-required="true">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cvv">CVV</label>
-                                        <input type="text" id="cvv" name="cvv" placeholder="123" required aria-required="true">
-                                    </div>
+                                    <label for="program">Which program interests you most?</label>
+                                    <select id="program" name="program" required aria-required="true">
+                                        <option value="">Select a program</option>
+                                        <option value="greatest-need">Where Most Needed</option>
+                                        <option value="education">Education Support</option>
+                                        <option value="women">Women's Empowerment</option>
+                                        <option value="elderly">Elderly Care</option>
+                                        <option value="emergency">Emergency Relief</option>
+                                        <option value="child-sponsorship">Child Sponsorship</option>
+                                        <option value="monthly-giving">Monthly Giving</option>
+                                    </select>
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-submit">Complete Donation</button>
-                            <p class="form-note">This is a demo form. No actual payment will be processed.</p>
+                            <div class="form-section">
+                                <h4>Message (Optional)</h4>
+                                <div class="form-group">
+                                    <label for="donor-message">Tell us more about your interest</label>
+                                    <textarea id="donor-message" name="message" rows="4" placeholder="Let us know how you'd like to help or if you have any questions..."></textarea>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-submit">Submit Interest</button>
+                            <p class="form-note">We'll contact you shortly with more information about supporting our mission.</p>
                         </form>
                     </div>
                 </div>
@@ -636,7 +613,7 @@
                 <h2>Ready to Make a Difference?</h2>
                 <p>Join us in bringing light, hope, and transformation to communities across India</p>
                 <div class="cta-buttons">
-                    <a href="#donate" class="btn btn-primary btn-lg">Donate Today</a>
+                    <a href="#contact" class="btn btn-primary btn-lg">Contact Us Today</a>
                     <a href="#get-involved" class="btn btn-secondary btn-lg">Explore Ways to Help</a>
                 </div>
             </div>
@@ -671,7 +648,7 @@
                 <div class="footer-resources">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#contact">Contact</a></li>
                         <li><a href="#">Annual Reports</a></li>
                         <li><a href="#">Financial Transparency</a></li>
                         <li><a href="#">Newsletter Signup</a></li>
