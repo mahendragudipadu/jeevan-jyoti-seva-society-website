@@ -183,7 +183,7 @@ button {
     box-shadow: var(--shadow-sm);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
     transition: box-shadow var(--transition-normal), padding var(--transition-normal);
 }
 
@@ -381,7 +381,7 @@ button {
     background: url('images/hero.png') no-repeat;
     background-size: cover;
     background-position: center 30%; /* Keeps important content (like faces) visible. Adjust: 0% = top, 50% = center, 100% = bottom */
-    z-index: 1;
+    z-index: 200;
 }
 
 .hero-overlay {
@@ -391,12 +391,12 @@ button {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, rgba(43, 62, 80, 0.6), rgba(59, 110, 165, 0.7));
-    z-index: 2;
+    z-index: 201;
 }
 
 .hero-content {
     position: relative;
-    z-index: 3;
+    z-index: 202;
     text-align: center;
     padding: var(--spacing-lg) var(--spacing-sm);
 }
