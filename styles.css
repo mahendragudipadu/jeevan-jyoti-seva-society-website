@@ -239,10 +239,9 @@ button {
 .logo-text {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--white);
+    color: black;
     line-height: 1.2;
     white-space: nowrap;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .header.scrolled .logo-text {
@@ -258,12 +257,11 @@ button {
 }
 
 .nav-link {
-    color: var(--white);
+    color: black;
     font-weight: 500;
     font-size: 1.05rem;
     transition: color var(--transition-fast);
     padding: var(--spacing-sm) var(--spacing-xs);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .header.scrolled .nav-link {
@@ -414,7 +412,7 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(43, 62, 80, 0.6), rgba(59, 110, 165, 0.7));
+    background: linear-gradient(to bottom, rgba(43, 62, 80, 0.25), rgba(59, 110, 165, 0.3));
     z-index: 201;
 }
 
