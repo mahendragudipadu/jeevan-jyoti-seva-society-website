@@ -460,11 +460,11 @@ button {
 
 .serve-card {
     background: var(--white);
-    padding: var(--spacing-md);
     border-radius: var(--radius-lg);
     text-align: center;
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-normal);
+    overflow: hidden;
 }
 
 .serve-card:hover {
@@ -472,19 +472,33 @@ button {
     box-shadow: var(--shadow-lg);
 }
 
-.serve-icon {
-    font-size: 4rem;
-    margin-bottom: var(--spacing-sm);
+.serve-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.serve-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.serve-card:hover .serve-image img {
+    transform: scale(1.05);
 }
 
 .serve-card h3 {
     color: var(--primary-blue);
     font-size: 1.5rem;
     margin-bottom: var(--spacing-xs);
+    padding: var(--spacing-md) var(--spacing-md) 0;
 }
 
 .serve-card p {
     color: var(--light-text);
+    padding: 0 var(--spacing-md) var(--spacing-md);
 }
 
 /* ==========================================================================
@@ -863,6 +877,113 @@ button {
 .author-role {
     font-size: 0.875rem;
     color: var(--light-text);
+}
+
+/* ==========================================================================
+   Recent Contributions Carousel
+   ========================================================================== */
+.contributions-section {
+    padding: var(--spacing-xl) 0;
+    background: var(--white);
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-fast);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: var(--spacing-md);
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--medium-gray);
+    border: none;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.carousel-dot.active {
+    background: var(--primary-blue);
+}
+
+.carousel-dot:hover {
+    background: var(--primary-orange);
+}
+
+@media (max-width: 768px) {
+    .carousel-slide img {
+        height: 300px;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
 }
 
 /* ==========================================================================

@@ -255,7 +255,7 @@ function initGallery() {
 // ==========================================================================
 
 /**
- * Initialize donor interest form with validation
+ * Initialize donor interest form with validation and Netlify submission
  */
 function initDonationForm() {
     const form = document.getElementById('donation-form');
@@ -263,19 +263,31 @@ function initDonationForm() {
     if (!form) return;
 
     // Form submission
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         if (validateForm(form)) {
-            // Get form data
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+            const firstName = formData.get('firstName');
 
-            // Show success message
-            alert(`Thank you for your interest, ${data.firstName}!\n\nWe have received your information:\n\nName: ${data.firstName} ${data.lastName}\nEmail: ${data.email}\nPhone: ${data.phone}\nInterest Area: ${data.program}\n\nWe will contact you shortly with more information about supporting our mission.\n\nNote: In production, this form would send an email to mahendragudipadu@gmail.com with these details.`);
+            try {
+                // Submit to Netlify Forms
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                });
 
-            // Reset form
-            form.reset();
+                if (response.ok) {
+                    alert(`Thank you for your interest, ${firstName}!\n\nWe have received your information and will contact you shortly with more information about supporting our mission.`);
+                    form.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, there was an error submitting your form. Please try again or contact us directly at jeevanjyotisevasociety4@gmail.com');
+            }
         }
     });
 }
@@ -285,25 +297,37 @@ function initDonationForm() {
 // ==========================================================================
 
 /**
- * Initialize contact form with validation
+ * Initialize contact form with validation and Netlify submission
  */
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         if (validateForm(form)) {
-            // Get form data
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+            const name = formData.get('name');
 
-            // Show success message
-            alert(`Thank you for your message, ${data.name}!\n\nWe have received your inquiry and will respond within 24-48 hours.\n\nThis is a demo form. In production, this would send an actual email.`);
+            try {
+                // Submit to Netlify Forms
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                });
 
-            // Reset form
-            form.reset();
+                if (response.ok) {
+                    alert(`Thank you for your message, ${name}!\n\nWe have received your inquiry and will respond within 24-48 hours.`);
+                    form.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, there was an error submitting your form. Please try again or contact us directly at jeevanjyotisevasociety4@gmail.com');
+            }
         }
     });
 }
@@ -407,6 +431,87 @@ function initScrollAnimations() {
 }
 
 // ==========================================================================
+// Contributions Carousel
+// ==========================================================================
+
+/**
+ * Initialize the contributions carousel with auto-play and navigation
+ */
+function initContributionsCarousel() {
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    const dotsContainer = document.querySelector('.carousel-dots');
+
+    if (!track || slides.length === 0) return;
+
+    let currentIndex = 0;
+    let autoPlayInterval;
+
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('carousel-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    function updateDots() {
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateDots();
+        resetAutoPlay();
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        goToSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        goToSlide(currentIndex);
+    }
+
+    function resetAutoPlay() {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(nextSlide, 5000);
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        const carouselInView = track.getBoundingClientRect().top < window.innerHeight &&
+                               track.getBoundingClientRect().bottom > 0;
+        if (carouselInView) {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        }
+    });
+
+    // Pause on hover
+    track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+    track.addEventListener('mouseleave', () => resetAutoPlay());
+
+    // Start auto-play
+    autoPlayInterval = setInterval(nextSlide, 5000);
+}
+
+// ==========================================================================
 // Initialize All Functions on DOM Load
 // ==========================================================================
 
@@ -416,6 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initStickyHeader();
     initMobileMenu();
     initSmoothScroll();
+    initContributionsCarousel();
     initGallery();
     initDonationForm();
     initContactForm();

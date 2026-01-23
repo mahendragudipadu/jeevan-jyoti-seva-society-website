@@ -56,17 +56,23 @@
                 <h2 class="section-title">Who We Serve</h2>
                 <div class="serve-grid">
                     <div class="serve-card">
-                        <div class="serve-icon" aria-hidden="true">👶</div>
+                        <div class="serve-image">
+                            <img src="images/program-education.jpg" alt="Children we serve">
+                        </div>
                         <h3>Children</h3>
                         <p>Providing education, nutrition, and support for a brighter future</p>
                     </div>
                     <div class="serve-card">
-                        <div class="serve-icon" aria-hidden="true">👩</div>
+                        <div class="serve-image">
+                            <img src="images/women empowerment.jpg" alt="Women we serve">
+                        </div>
                         <h3>Women</h3>
                         <p>Skill training and empowerment programs for financial independence</p>
                     </div>
                     <div class="serve-card">
-                        <div class="serve-icon" aria-hidden="true">👴</div>
+                        <div class="serve-image">
+                            <img src="images/program-elderly.jpg" alt="Elderly we serve">
+                        </div>
                         <h3>Elderly</h3>
                         <p>Compassionate care and medical support for senior citizens</p>
                     </div>
@@ -239,11 +245,39 @@
             </div>
         </section>
 
-        <!-- Impact Section -->
-        <section id="impact" class="impact-stats">
+        <!-- Recent Contributions Carousel -->
+        <section class="contributions-section">
             <div class="container">
-                <h2 class="section-title">Our Impact</h2>
-                <p class="section-subtitle">Building hope and transforming lives in communities across India</p>
+                <h2 class="section-title">Recent Contributions</h2>
+                <p class="section-subtitle">See the impact of our generous donors</p>
+                <div class="carousel-container">
+                    <button class="carousel-btn carousel-prev" aria-label="Previous slide">
+                        <span>&#10094;</span>
+                    </button>
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <img src="images/contributions/contribution-1.jpg" alt="Donor contribution 1">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="images/contributions/contribution-2.jpg" alt="Donor contribution 2">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="images/contributions/contribution-3.jpg" alt="Donor contribution 3">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="images/contributions/contribution-4.jpg" alt="Donor contribution 4">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="images/contributions/contribution-5.jpg" alt="Donor contribution 5">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn carousel-next" aria-label="Next slide">
+                        <span>&#10095;</span>
+                    </button>
+                </div>
+                <div class="carousel-dots"></div>
             </div>
         </section>
 
@@ -393,7 +427,11 @@
                         </div>
                     </div>
                     <div class="donation-form-wrapper">
-                        <form id="donation-form" class="form" novalidate>
+                        <form id="donation-form" name="donor-interest" class="form" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+                            <input type="hidden" name="form-name" value="donor-interest">
+                            <p class="hidden" style="display:none;">
+                                <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                            </p>
                             <div class="form-section">
                                 <h4>Your Information</h4>
                                 <div class="form-row">
@@ -456,7 +494,11 @@
                 <p class="section-subtitle">We'd love to hear from you</p>
                 <div class="contact-grid">
                     <div class="contact-form-wrapper">
-                        <form id="contact-form" class="form" novalidate>
+                        <form id="contact-form" name="contact" class="form" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+                            <input type="hidden" name="form-name" value="contact">
+                            <p class="hidden" style="display:none;">
+                                <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                            </p>
                             <div class="form-group">
                                 <label for="contact-name">Name</label>
                                 <input type="text" id="contact-name" name="name" required aria-required="true">
@@ -487,19 +529,18 @@
                         <div class="contact-card">
                             <div class="contact-icon">📧</div>
                             <h4>Email</h4>
-                            <p><a href="mailto:info@jeevanjyoti.org">info@jeevanjyoti.org</a></p>
+                            <p><a href="mailto:jeevanjyotisevasociety4@gmail.com">jeevanjyotisevasociety4@gmail.com</a></p>
                         </div>
                         <div class="contact-card">
                             <div class="contact-icon">📞</div>
                             <h4>Phone</h4>
-                            <p>+91 12345 67890<br>
-                            US: +1 (555) 123-4567</p>
+                            <p>+1 (218) 606-3001</p>
                         </div>
                         <div class="contact-card">
                             <div class="contact-icon">🕐</div>
                             <h4>Office Hours</h4>
                             <p>Monday - Friday<br>
-                            9:00 AM - 5:00 PM IST</p>
+                            9:00 AM - 5:00 PM CT</p>
                         </div>
                     </div>
                 </div>
