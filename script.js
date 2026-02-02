@@ -543,6 +543,15 @@ const donorProjects = {
             { image: 'images/donors/donor-3/project-2.jpeg', alt: 'Project 2' },
             { image: 'images/donors/donor-3/project-3.jpeg', alt: 'Project 3' }
         ]
+    },
+    4: {
+        name: 'Dr. Prince',
+        projects: [
+            { image: 'images/donors/donor-4/project-1.jpeg', alt: 'Project 1' },
+            { image: 'images/donors/donor-4/project-2.jpeg', alt: 'Project 2' },
+            { image: 'images/donors/donor-4/project-3.jpeg', alt: 'Project 3' },
+            { image: 'images/donors/donor-4/project-4.jpeg', alt: 'Project 4' }
+        ]
     }
 };
 

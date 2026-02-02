@@ -398,7 +398,7 @@ button {
    ========================================================================== */
 .hero {
     position: relative;
-    min-height: 75vh;
+    height: 700px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -416,12 +416,12 @@ button {
     height: 100%;
     background: url('images/New Hero Image.png') no-repeat;
     background-size: cover;
-    background-position: center 30%;
+    background-position: center top;
     z-index: 200;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding-bottom: var(--spacing-xl);
+    padding-bottom: 2rem;
 }
 
 .hero-logo {
@@ -435,15 +435,15 @@ button {
 }
 
 .hero-logo-image {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 140px;
+    max-height: 140px;
     width: auto;
     height: auto;
     object-fit: contain;
 }
 
 .hero-logo-text {
-    font-size: 1.75rem;
+    font-size: 2.25rem;
     font-weight: 700;
     color: var(--primary-blue);
     line-height: 1.2;
@@ -451,7 +451,7 @@ button {
 
 .hero-content {
     text-align: center;
-    padding: var(--spacing-lg) var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-sm);
 }
 
 .hero-title {
@@ -1990,13 +1990,13 @@ button {
     }
 
     .hero-logo-image {
-        max-width: 75px;
-        max-height: 75px;
+        max-width: 100px;
+        max-height: 100px;
     }
 
     .hero-logo-text {
-        font-size: 1.5rem;
-        max-width: 180px;
+        font-size: 1.75rem;
+        max-width: 200px;
     }
 
     .hero-background {
