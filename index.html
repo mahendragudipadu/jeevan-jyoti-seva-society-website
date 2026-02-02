@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Jeevan Jyoti Seva Society - Bringing light and life to India through education, empowerment, and care">
     <title>Jeevan Jyoti Seva Society - Spreading Light, Hope and Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -42,11 +45,16 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero">
-            <!-- Hero image placeholder - replace with actual image -->
-            <div class="hero-background"></div>
-            <div class="hero-overlay"></div>
-            <div class="container hero-content">
-                <h1 class="hero-title">Spreading light, hope and service to all</h1>
+            <!-- Hero logo at top -->
+            <div class="hero-logo">
+                <img src="images/logo-transparent.png" alt="Jeevan Jyoti Seva Society Logo" class="hero-logo-image">
+                <span class="hero-logo-text">Jeevan Jyoti Seva Society</span>
+            </div>
+            <!-- Hero image with text positioned relative to it -->
+            <div class="hero-background">
+                <div class="hero-content">
+                    <h1 class="hero-title">Spreading light, hope and service to all</h1>
+                </div>
             </div>
         </section>
 
@@ -57,9 +65,9 @@
                 <div class="serve-grid">
                     <div class="serve-card">
                         <div class="serve-image">
-                            <img src="images/program-education.jpg" alt="Children we serve">
+                            <img src="images/program-education.jpg" alt="Education Support">
                         </div>
-                        <h3>Children</h3>
+                        <h3>Education Support</h3>
                         <p>Providing education, nutrition, and support for a brighter future</p>
                     </div>
                     <div class="serve-card">
@@ -117,10 +125,6 @@
                             <div class="value-card">
                                 <h4>Faith-Centered</h4>
                                 <p>Grounded in Christian love and service to all</p>
-                            </div>
-                            <div class="value-card">
-                                <h4>Integrity</h4>
-                                <p>Transparent and accountable in all we do</p>
                             </div>
                             <div class="value-card">
                                 <h4>Dignity</h4>
@@ -280,6 +284,57 @@
                 <div class="carousel-dots"></div>
             </div>
         </section>
+
+        <!-- Donor Highlights -->
+        <section class="donor-highlights">
+            <div class="container">
+                <h2 class="section-title">Donor Highlights</h2>
+                <p class="section-subtitle">Click on a donor to see the projects they've supported</p>
+
+                <div class="donors-grid">
+                    <!-- Donor 1 -->
+                    <div class="donor-card" data-donor="1">
+                        <div class="donor-avatar">
+                            <img src="images/donors/donor-1/profile.jpeg" alt="Donor profile">
+                        </div>
+                        <h3 class="donor-name">Donor</h3>
+                        <p class="donor-location">USA</p>
+                    </div>
+
+                    <!-- Donor 2 -->
+                    <div class="donor-card" data-donor="2">
+                        <div class="donor-avatar">
+                            <img src="images/donors/donor-2/profile.jpeg" alt="Donor profile">
+                        </div>
+                        <h3 class="donor-name">Donor</h3>
+                        <p class="donor-location">USA</p>
+                    </div>
+
+                    <!-- Donor 3 -->
+                    <div class="donor-card" data-donor="3">
+                        <div class="donor-avatar">
+                            <img src="images/donors/donor-3/profile.jpeg" alt="Carol Ann Cyr">
+                        </div>
+                        <h3 class="donor-name">Carol Ann Cyr</h3>
+                        <p class="donor-location">USA</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Donor Projects Popup Modal -->
+        <div class="donor-modal-overlay" id="donor-modal-overlay">
+            <div class="donor-modal">
+                <div class="donor-modal-header">
+                    <h3 class="donor-modal-title">Projects Supported by <span id="selected-donor-name">Donor</span></h3>
+                    <button class="donor-modal-close" aria-label="Close modal">&times;</button>
+                </div>
+                <div class="donor-modal-grid" id="donor-projects-grid">
+                    <!-- Project images will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
 
         <!-- Photo Gallery -->
         <section class="gallery">
@@ -523,8 +578,8 @@
                             <div class="contact-icon">📍</div>
                             <h4>Address</h4>
                             <p>Jeevan Jyoti Seva Society<br>
-                            Village Road, District Name<br>
-                            State, India - 123456</p>
+                            11045 Parsons Rd<br>
+                            Duluth, GA 30097</p>
                         </div>
                         <div class="contact-card">
                             <div class="contact-icon">📧</div>

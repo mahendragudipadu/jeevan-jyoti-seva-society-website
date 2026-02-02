@@ -512,6 +512,194 @@ function initContributionsCarousel() {
 }
 
 // ==========================================================================
+// Donor Highlights - Click to Show Supported Projects
+// ==========================================================================
+
+// Donor project data - use 'image' for real images, 'class' for gradient placeholders
+const donorProjects = {
+    1: {
+        name: 'Donor',
+        projects: [
+            { image: 'images/donors/donor-1/project-1.jpeg', alt: 'Project 1' },
+            { image: 'images/donors/donor-1/project-2.jpeg', alt: 'Project 2' },
+            { image: 'images/donors/donor-1/project-3.jpeg', alt: 'Project 3' },
+            { image: 'images/donors/donor-1/project-4.jpeg', alt: 'Project 4' }
+        ]
+    },
+    2: {
+        name: 'Donor',
+        projects: [
+            { image: 'images/donors/donor-2/project-1.jpeg', alt: 'Project 1' },
+            { image: 'images/donors/donor-2/project-2.jpeg', alt: 'Project 2' },
+            { image: 'images/donors/donor-2/project-3.jpeg', alt: 'Project 3' },
+            { image: 'images/donors/donor-2/project-4.jpeg', alt: 'Project 4' },
+            { image: 'images/donors/donor-2/project-5.jpeg', alt: 'Project 5' }
+        ]
+    },
+    3: {
+        name: 'Carol Ann Cyr',
+        projects: [
+            { image: 'images/donors/donor-3/project-1.jpeg', alt: 'Project 1' },
+            { image: 'images/donors/donor-3/project-2.jpeg', alt: 'Project 2' },
+            { image: 'images/donors/donor-3/project-3.jpeg', alt: 'Project 3' }
+        ]
+    }
+};
+
+/**
+ * Initialize donor highlights functionality
+ */
+function initDonorHighlights() {
+    const donorCards = document.querySelectorAll('.donor-card');
+    const modalOverlay = document.getElementById('donor-modal-overlay');
+    const projectsGrid = document.getElementById('donor-projects-grid');
+    const selectedDonorName = document.getElementById('selected-donor-name');
+    const closeBtn = document.querySelector('.donor-modal-close');
+
+    if (!donorCards.length || !modalOverlay) return;
+
+    // Create image lightbox for full-size viewing
+    const imageLightbox = document.createElement('div');
+    imageLightbox.className = 'image-lightbox';
+    imageLightbox.innerHTML = `
+        <button class="image-lightbox-close" aria-label="Close">&times;</button>
+        <button class="image-lightbox-prev" aria-label="Previous image">&#10094;</button>
+        <img src="" alt="Project image" class="image-lightbox-img">
+        <button class="image-lightbox-next" aria-label="Next image">&#10095;</button>
+    `;
+    document.body.appendChild(imageLightbox);
+
+    const lightboxImg = imageLightbox.querySelector('.image-lightbox-img');
+    const lightboxClose = imageLightbox.querySelector('.image-lightbox-close');
+    const lightboxPrev = imageLightbox.querySelector('.image-lightbox-prev');
+    const lightboxNext = imageLightbox.querySelector('.image-lightbox-next');
+
+    let currentProjectImages = [];
+    let currentImageIndex = 0;
+
+    // Open image in lightbox
+    function openImageLightbox(images, index) {
+        currentProjectImages = images;
+        currentImageIndex = index;
+        updateLightboxImage();
+        imageLightbox.classList.add('active');
+    }
+
+    // Update lightbox image
+    function updateLightboxImage() {
+        const project = currentProjectImages[currentImageIndex];
+        lightboxImg.src = project.image;
+        lightboxImg.alt = project.alt;
+    }
+
+    // Navigate to next image
+    function nextLightboxImage() {
+        currentImageIndex = (currentImageIndex + 1) % currentProjectImages.length;
+        updateLightboxImage();
+    }
+
+    // Navigate to previous image
+    function prevLightboxImage() {
+        currentImageIndex = (currentImageIndex - 1 + currentProjectImages.length) % currentProjectImages.length;
+        updateLightboxImage();
+    }
+
+    // Close image lightbox
+    function closeImageLightbox() {
+        imageLightbox.classList.remove('active');
+        lightboxImg.src = '';
+        currentProjectImages = [];
+    }
+
+    lightboxClose.addEventListener('click', closeImageLightbox);
+    lightboxPrev.addEventListener('click', prevLightboxImage);
+    lightboxNext.addEventListener('click', nextLightboxImage);
+    imageLightbox.addEventListener('click', (e) => {
+        if (e.target === imageLightbox) {
+            closeImageLightbox();
+        }
+    });
+
+    // Handle donor card clicks
+    donorCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const donorId = card.dataset.donor;
+            const donor = donorProjects[donorId];
+
+            if (!donor) return;
+
+            // Remove active class from all cards
+            donorCards.forEach(c => c.classList.remove('active'));
+
+            // Add active class to clicked card
+            card.classList.add('active');
+
+            // Update donor name
+            selectedDonorName.textContent = donor.name;
+
+            // Clear and populate projects grid
+            projectsGrid.innerHTML = '';
+            // Filter projects that have real images for lightbox navigation
+            const imageProjects = donor.projects.filter(p => p.image);
+
+            donor.projects.forEach((project, index) => {
+                const projectItem = document.createElement('div');
+                projectItem.className = 'donor-project-item';
+                if (project.image) {
+                    projectItem.innerHTML = `<img src="${project.image}" alt="${project.alt}" class="donor-project-image">`;
+                    // Add click handler for image lightbox with navigation
+                    projectItem.style.cursor = 'pointer';
+                    const imageIndex = imageProjects.indexOf(project);
+                    projectItem.addEventListener('click', () => {
+                        openImageLightbox(imageProjects, imageIndex);
+                    });
+                } else {
+                    projectItem.innerHTML = `<div class="donor-project-placeholder ${project.class}" title="${project.alt}"></div>`;
+                }
+                projectsGrid.appendChild(projectItem);
+            });
+
+            // Show modal popup
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    });
+
+    // Close button handler
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    // Close on overlay click (outside modal)
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            closeModal();
+        }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (imageLightbox.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeImageLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                prevLightboxImage();
+            } else if (e.key === 'ArrowRight') {
+                nextLightboxImage();
+            }
+        } else if (modalOverlay.classList.contains('active') && e.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+        donorCards.forEach(c => c.classList.remove('active'));
+    }
+}
+
+// ==========================================================================
 // Initialize All Functions on DOM Load
 // ==========================================================================
 
@@ -527,6 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     setCurrentYear();
     initScrollAnimations();
+    initDonorHighlights();
 
     // Log initialization (can be removed in production)
     console.log('Jeevan Jyoti Seva Society website initialized successfully!');
